@@ -1,0 +1,18 @@
+{
+  "name": "SHB-Plus",
+  "description": "Add show windows, and back button to the software home button bar",
+  "developer": {
+    "name": "Michael Henretty"
+  },
+  "package_path": "package.zip",
+  "role": "addon",
+  "type": "certified",
+  "customizations": [{
+    "filter": "system.gaiamobile.org",
+    "css": [],
+    "scripts": ["shb-plus.js"]
+  }],
+  "icons": {
+    "128": "icons/home.png"
+  }
+}
