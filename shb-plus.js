@@ -25,14 +25,20 @@
   showWindows.style.border = 'none';
   showWindows.style.color = 'white';
   showWindows.style.fontSize = '3rem';
-  showWindows.addEventListener('mousedown', function() {
-    window.dispatchEvent(new CustomEvent('taskmanagershow'));
+  showWindows.style.fontWeight = 'bold';
+  showWindows.addEventListener('touchstart', function() {
+    if (window.wrappedJSObject.appWindowManager.taskManager.isShown()) {
+      window.wrappedJSObject.appWindowManager.taskManager.exitToApp();
+      //window.dispatchEvent(new CustomEvent('taskmanagerhide'));
+    } else {
+      window.dispatchEvent(new CustomEvent('taskmanagershow'));
+    }
   }, true);
   buttons.appendChild(showWindows);
 
   var kill = document.createElement('button');
   kill.id = 'kill-window-button';
-  kill.textContent = 'X';
+  kill.textContent = '▽';
   kill.style.position = 'absolute';
   kill.style.left = '1rem';
   kill.style.top = 0;
@@ -44,8 +50,9 @@
   kill.style.background = 'transparent';
   kill.style.border = 'none';
   kill.style.color = 'white';
-  kill.style.fontSize = '2.1rem';
-  kill.addEventListener('mousedown', function() {
+  kill.style.fontSize = '3rem';
+  kill.style.fontWeight = 'bold';
+  kill.addEventListener('touchstart', function() {
     var oldApp = window.wrappedJSObject.StackManager.getCurrent();
     window.wrappedJSObject.SheetsTransition.begin('ltr');
     window.wrappedJSObject.SheetsTransition.snapBack(1);
@@ -53,4 +60,6 @@
     oldApp.kill();
   }, true);
   buttons.appendChild(kill);
+
+  document.styleSheets[0].insertRule('#kill-window-button:active{ color: blue }', 0);
 }());
