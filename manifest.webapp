@@ -1,6 +1,6 @@
 {
-  "name": "SHB-Plus",
-  "description": "Add show windows, and back button to the software home button bar",
+  "name": "Homebar-Plus",
+  "description": "Add show windows, and kill app button to the software home button bar",
   "developer": {
     "name": "Michael Henretty"
   },

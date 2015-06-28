@@ -1,2 +1,2 @@
-# fxos-shb-plus
-Add show windows, and back button to software home button
+# Homebar Plus
+Add show windows, and kill app button to the software home button bar

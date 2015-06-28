@@ -1,6 +1,7 @@
 (function() {
   var buttons = document.getElementById('software-buttons');
 
+  // Clean up any old installs.
   var old = document.getElementById('show-windows-button');
   if (old) {
     old.remove();
@@ -29,7 +30,6 @@
   showWindows.addEventListener('touchstart', function() {
     if (window.wrappedJSObject.appWindowManager.taskManager.isShown()) {
       window.wrappedJSObject.appWindowManager.taskManager.exitToApp();
-      //window.dispatchEvent(new CustomEvent('taskmanagerhide'));
     } else {
       window.dispatchEvent(new CustomEvent('taskmanagershow'));
     }
@@ -60,6 +60,4 @@
     oldApp.kill();
   }, true);
   buttons.appendChild(kill);
-
-  document.styleSheets[0].insertRule('#kill-window-button:active{ color: blue }', 0);
 }());
