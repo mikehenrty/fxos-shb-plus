@@ -43,7 +43,7 @@
 
     var kill = document.createElement('button');
     kill.id = 'kill-window-button';
-    kill.textContent = '▽';
+    kill.textContent = '☠';
     kill.style.position = 'absolute';
     kill.style.left = '1rem';
     kill.style.top = 0;
