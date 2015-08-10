@@ -38,9 +38,6 @@
       } else {
         window.dispatchEvent(new CustomEvent('taskmanagershow'));
       }
-      if('vibrate' in navigator) {
-      // ... vibrate for a second
-      navigator.vibrate(1000);}
     }, true);
     buttons.appendChild(showWindows);
 
