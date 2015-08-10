@@ -2,7 +2,7 @@
   function init() {
     var buttons = document.getElementById('software-buttons');
     if (!buttons) {
-      console.log('michael, no homebar found?');
+      console.log('Thatoo, no homebar found?');
       return;
     }
 
@@ -43,7 +43,7 @@
 
     var kill = document.createElement('button');
     kill.id = 'kill-window-button';
-    kill.textContent = '☠';
+    kill.textContent = 'x';
     kill.style.position = 'absolute';
     kill.style.left = '1rem';
     kill.style.top = 0;
@@ -65,6 +65,25 @@
       oldApp.kill();
     }, true);
     buttons.appendChild(kill);
+
+    window.addEventListener('orientationchange', function(){
+      //console.log("ORIENTATION CHANGED")
+      if (window.screen.mozOrientation.includes('landscape')){
+        kill.style.left = "-10px";
+        kill.style.top = "";
+        kill.style.bottom = "1.5rem";
+        showWindows.style.right = "";
+        showWindows.style.top = "1.5rem";
+        showWindows.style.left = "-10px";
+      } else {
+        kill.style.left = "1rem";
+        kill.style.top = "0";
+        kill.style.bottom = "";
+        showWindows.style.right = "1rem";
+        showWindows.style.top = "0";
+        showWindows.style.left = "";
+      }
+    })
   }
 
   // Make sure we have the homebar element before booting.

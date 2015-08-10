@@ -1,8 +1,8 @@
 {
-  "name": "Homebar-Plus",
-  "description": "Add show windows, and kill app button to the software home button bar",
+  "name": "Homebar-Plus-rotate",
+  "description": "Add kill button (and show window button) to the software home button bar, and can rotate. Based on Michael Henretty's work. Thank you Michael!",
   "developer": {
-    "name": "Michael Henretty"
+    "name": "Thatoo"
   },
   "package_path": "package.zip",
   "role": "addon",
