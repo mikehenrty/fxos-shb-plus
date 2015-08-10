@@ -38,6 +38,9 @@
       } else {
         window.dispatchEvent(new CustomEvent('taskmanagershow'));
       }
+      if('vibrate' in navigator) {
+      // ... vibrate for a second
+      navigator.vibrate(50);}
     }, true);
     buttons.appendChild(showWindows);
 
@@ -63,6 +66,9 @@
       window.wrappedJSObject.SheetsTransition.snapBack(1);
       window.wrappedJSObject.StackManager.goPrev();
       oldApp.kill();
+      if('vibrate' in navigator) {
+      // ... vibrate for a second
+      navigator.vibrate(50);}
     }, true);
     buttons.appendChild(kill);
 
