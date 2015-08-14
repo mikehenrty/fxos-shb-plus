@@ -1,9 +1,14 @@
 {
   "name": "Homebar-Plus-rotate",
-  "description": "Add kill button (and show window button) to the software home button bar, and can rotate. Based on Michael Henretty's work. Thank you Michael!",
+  "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
   "developer": {
-    "name": "Thatoo"
+    "name": "Michael Henretty",
+    "url": "https://github.com/mikehenrty"
   },
+  "contributors": [{
+    "name": "Thatoo",
+    "url": "https://github.com/Thatoo"
+  }],
   "package_path": "package.zip",
   "role": "addon",
   "type": "certified",
