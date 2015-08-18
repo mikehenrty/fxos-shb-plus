@@ -1,16 +1,11 @@
 {
-  "name": "Homebar-Plus-rotate",
+  "name": "Homebar-Plus",
   "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
   "manifest_version": 2,
   "version": "2.0",
   "author": "Michael Henretty",
   "content_scripts": [{
-    "matches": [
-      "*://system.gaiamobile.org/*",
-      "*system*",
-      "app://system.gaiamobile.org/index.html"
-    ],
-    "css": [],
+    "matches": ["app://system.gaiamobile.org/index.html"],
     "js": ["shb-plus.js"]
   }],
   "icons": {
