@@ -5,7 +5,11 @@
   "version": "2.0",
   "author": "Michael Henretty",
   "content_scripts": [{
-    "matches": ["*://system.gaiamobile.org/*"],
+    "matches": [
+      "*://system.gaiamobile.org/*",
+      "*system*",
+      "app://system.gaiamobile.org/index.html"
+    ],
     "css": [],
     "js": ["shb-plus.js"]
   }],
