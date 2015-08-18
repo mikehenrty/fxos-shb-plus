@@ -3,14 +3,6 @@
   "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
   "manifest_version": 2,
   "version": "2.0",
-  "author": {
-    "name": "Michael Henretty",
-    "url": "https://github.com/mikehenrty"
-  },
-  "contributors": [{
-    "name": "Thatoo",
-    "url": "https://github.com/Thatoo"
-  }],
   "content_scripts": [{
     "matches": "*://system.gaiamobile.org/*",
     "css": [],
