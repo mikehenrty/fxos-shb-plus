@@ -1,0 +1,14 @@
+{
+  "name": "Homebar-Plus-rotate",
+  "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
+  "version": "2.0",
+  "developer": {
+    "name": "Michael Henretty",
+    "url": "https://github.com/mikehenrty"
+  },
+  "contributors": [{
+    "name": "Thatoo",
+    "url": "https://github.com/Thatoo"
+  }],
+  "package_path": "new-package.zip"
+}
