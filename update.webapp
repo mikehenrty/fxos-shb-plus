@@ -1,0 +1,12 @@
+{
+  "name": "Homebar-Plus",
+  "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
+  "version": "2.0",
+  "developer": {
+    "name": "Michael Henretty"
+  },
+  "package_path": "new-package.zip",
+  "icons": {
+    "128": "icons/home.png"
+  }
+}
