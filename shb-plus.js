@@ -50,6 +50,12 @@
         left: 1rem;
       }
 
+      #${ID_KILL_WINDOW}.flip {
+        animation-name: flip;
+        animation-duration: 0.7s;
+        backface-visibility: visible;
+      }
+
       @media (orientation: landscape) {
         #${ID_SHOW_WINDOWS}, #${ID_KILL_WINDOW} {
           width: 100%;
@@ -67,6 +73,29 @@
           bottom: 1.5rem;
         }
       }
+
+    @keyframes flip {
+      from {
+        transform: perspective(40rem) rotate3d(0, 1, 0, -360deg);
+        animation-timing-function: ease-out;
+      }
+      40% {
+        transform: perspective(40rem) translate3d(0, 0, 15rem) rotate3d(0, 1, 0, -190deg);
+        animation-timing-function: ease-out;
+      }
+      50% {
+        transform: perspective(40rem) translate3d(0, 0, 15rem) rotate3d(0, 1, 0, -170deg);
+        animation-timing-function: ease-in;
+      }
+      80% {
+        transform: perspective(40rem) scale3d(.95, .95, .95);
+        animation-timing-function: ease-in;
+      }
+      to {
+        transform: perspective(40rem);
+        animation-timing-function: ease-in;
+      }
+    }
     `));
     document.head.appendChild(style);
 
@@ -93,6 +122,11 @@
     kill.addEventListener('touchstart', function() {
       var oldApp = window.wrappedJSObject.StackManager.getCurrent();
       if (oldApp) {
+        kill.addEventListener('animationend', function afterFlip() {
+          kill.removeEventListener('animationend', afterFlip);
+          kill.classList.remove('flip');
+        });
+        kill.classList.add('flip');
         window.wrappedJSObject.SheetsTransition.begin('ltr');
         window.wrappedJSObject.SheetsTransition.snapLeft(1);
         window.wrappedJSObject.StackManager.goPrev();
