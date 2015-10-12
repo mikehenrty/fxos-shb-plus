@@ -64,7 +64,7 @@
     kill.addEventListener('touchstart', function() {
       var oldApp = window.wrappedJSObject.StackManager.getCurrent();
       window.wrappedJSObject.SheetsTransition.begin('ltr');
-      window.wrappedJSObject.SheetsTransition.snapBack(1);
+      window.wrappedJSObject.SheetsTransition.snapLeft(1);
       window.wrappedJSObject.StackManager.goPrev();
       oldApp.kill();
       if('vibrate' in navigator) {
