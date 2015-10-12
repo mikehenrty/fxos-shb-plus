@@ -76,7 +76,7 @@
     showWindows.textContent = '▢';
     showWindows.addEventListener('touchstart', function() {
       if (window.wrappedJSObject.appWindowManager.taskManager.isShown()) {
-        window.wrappedJSObject.appWindowManager.taskManager.exitToApp();
+        window.wrappedJSObject.appWindowManager.taskManager.hide();
       } else {
         window.dispatchEvent(new CustomEvent('taskmanagershow'));
       }
