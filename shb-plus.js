@@ -29,7 +29,6 @@
         height: 5rem;
         width: 7rem;
         padding: 0;
-        z-index: 99999999;
         pointer-events: all;
         background: transparent;
         border: none;
@@ -85,7 +84,8 @@
         navigator.vibrate(50);
       }
     }, true);
-    buttons.appendChild(showWindows);
+    // Insert as first child so dead-space node prevents accidental clicks.
+    buttons.insertBefore(showWindows, buttons.firstChild);
 
     var kill = document.createElement('button');
     kill.id = ID_KILL_WINDOW;
@@ -103,7 +103,8 @@
         navigator.vibrate(50);
       }
     }, true);
-    buttons.appendChild(kill);
+    // Insert as first child so dead-space node prevents accidental clicks.
+    buttons.insertBefore(kill, buttons.firstChild);
   }
 
   // Make sure we have the homebar element before booting.
