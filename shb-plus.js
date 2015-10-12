@@ -1,5 +1,9 @@
 (function() {
   function init() {
+    const ID_STYLES = 'shb-styles';
+    const ID_SHOW_WINDOWS = 'show-windows-button';
+    const ID_KILL_WINDOW = 'kill-window-button';
+
     var buttons = document.getElementById('software-buttons');
     if (!buttons) {
       console.log('shb-plus, no homebar found?');
@@ -7,31 +11,69 @@
     }
 
     // Clean up any old installs.
-    var old = document.getElementById('show-windows-button');
-    if (old) {
-      old.remove();
+    function removeElement(id) {
+      var old = document.getElementById(id);
+      old && old.remove();
     }
-    old = document.getElementById('kill-window-button');
-    if (old) {
-      old.remove();
-    }
+    removeElement(ID_STYLES);
+    removeElement(ID_SHOW_WINDOWS);
+    removeElement(ID_KILL_WINDOW);
+
+    // Inject inline styles
+    var style = document.createElement('style');
+    style.id = ID_STYLES;
+    style.appendChild(document.createTextNode(`
+      #${ID_SHOW_WINDOWS}, #${ID_KILL_WINDOW} {
+        position: absolute;
+        top: 0;
+        height: 5rem;
+        width: 7rem;
+        padding: 0;
+        z-index: 99999999;
+        pointer-events: all;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+
+      #${ID_SHOW_WINDOWS}:active,
+      #${ID_KILL_WINDOW}:active {
+        color: #00caf2;
+      }
+
+      #${ID_SHOW_WINDOWS} {
+        right: 1rem;
+      }
+
+      #${ID_KILL_WINDOW} {
+        left: 1rem;
+      }
+
+      @media (orientation: landscape) {
+        #${ID_SHOW_WINDOWS}, #${ID_KILL_WINDOW} {
+          width: 100%;
+          right: 0;
+          left: unset;
+        }
+
+        #${ID_SHOW_WINDOWS} {
+          top: 1.5rem;
+          bottom: unset;
+        }
+
+        #${ID_KILL_WINDOW} {
+          top: unset;
+          bottom: 1.5rem;
+        }
+      }
+    `));
+    document.head.appendChild(style);
 
     var showWindows = document.createElement('button');
-    showWindows.id = 'show-windows-button';
+    showWindows.id = ID_SHOW_WINDOWS;
     showWindows.textContent = '▢';
-    showWindows.style.position = 'absolute';
-    showWindows.style.right = '1rem';
-    showWindows.style.top = 0;
-    showWindows.style.height = '5rem';
-    showWindows.style.width = '7rem';
-    showWindows.style.backgroundColor = 'red';
-    showWindows.style.zIndex = 99999999;
-    showWindows.style.pointerEvents = 'all';
-    showWindows.style.background = 'transparent';
-    showWindows.style.border = 'none';
-    showWindows.style.color = 'white';
-    showWindows.style.fontSize = '3rem';
-    showWindows.style.fontWeight = 'bold';
     showWindows.addEventListener('touchstart', function() {
       if (window.wrappedJSObject.appWindowManager.taskManager.isShown()) {
         window.wrappedJSObject.appWindowManager.taskManager.exitToApp();
@@ -46,21 +88,8 @@
     buttons.appendChild(showWindows);
 
     var kill = document.createElement('button');
-    kill.id = 'kill-window-button';
+    kill.id = ID_KILL_WINDOW;
     kill.textContent = '☠';
-    kill.style.position = 'absolute';
-    kill.style.left = '1rem';
-    kill.style.top = 0;
-    kill.style.height = '5rem';
-    kill.style.width = '7rem';
-    kill.style.backgroundColor = 'yellow';
-    kill.style.zIndex = 99999999;
-    kill.style.pointerEvents = 'all';
-    kill.style.background = 'transparent';
-    kill.style.border = 'none';
-    kill.style.color = 'white';
-    kill.style.fontSize = '3rem';
-    kill.style.fontWeight = 'bold';
     kill.addEventListener('touchstart', function() {
       var oldApp = window.wrappedJSObject.StackManager.getCurrent();
       window.wrappedJSObject.SheetsTransition.begin('ltr');
@@ -73,24 +102,6 @@
       }
     }, true);
     buttons.appendChild(kill);
-
-    window.addEventListener('orientationchange', function(){
-      if (window.screen.mozOrientation.includes('landscape')){
-        kill.style.left = "-10px";
-        kill.style.top = "";
-        kill.style.bottom = "1.5rem";
-        showWindows.style.right = "";
-        showWindows.style.top = "1.5rem";
-        showWindows.style.left = "-10px";
-      } else {
-        kill.style.left = "1rem";
-        kill.style.top = "0";
-        kill.style.bottom = "";
-        showWindows.style.right = "1rem";
-        showWindows.style.top = "0";
-        showWindows.style.left = "";
-      }
-    });
   }
 
   // Make sure we have the homebar element before booting.
