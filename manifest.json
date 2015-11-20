@@ -1,8 +1,8 @@
 {
   "name": "Homebar-Plus",
   "description": "Add \"Show Windows\" and \"Kill Current\" buttons to the homebar.",
-  "manifest_version": 2,
-  "version": "2.2",
+  "manifest_version": 3,
+  "version": "3.0",
   "author": "Michael Henretty",
   "content_scripts": [{
     "matches": ["app://system.gaiamobile.org/index.html"],
