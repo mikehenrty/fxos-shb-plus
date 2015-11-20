@@ -128,9 +128,15 @@
         });
         kill.classList.add('flip');
         window.wrappedJSObject.SheetsTransition.begin('ltr');
-        window.wrappedJSObject.SheetsTransition.snapLeft(1);
-        window.wrappedJSObject.StackManager.goPrev();
-        oldApp.kill();
+        window.wrappedJSObject.SheetsTransition.moveInDirection('ltr', 0.001);
+        setTimeout(function() {
+          window.wrappedJSObject.SheetsTransition.snapLeft(0.0005);
+          window.wrappedJSObject.StackManager.goPrev();
+          window.addEventListener('sheets-gesture-end', function snapWait() {
+            window.removeEventListener('sheets-gesture-end', snapWait);
+            oldApp.kill();
+          });
+        });
       }
       if('vibrate' in navigator) {
         // ... vibrate for a second
